@@ -6,7 +6,11 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "postinstall": "prisma generate",
+    "prisma": "prisma",
+    "migrate": "prisma migrate dev",
+    "migrate:deploy": "prisma migrate deploy",
   },
   "prisma": {
     "schema": "src/prisma/schema.prisma"
