@@ -1,6 +1,6 @@
 'use client'
 
-import {useState} from 'react';
+import {use, useState} from 'react';
 import {useRouter} from 'next/navigation';
 import {Todo} from '@prisma/client';
 import {useEffect } from 'react';
@@ -8,8 +8,24 @@ import {useEffect } from 'react';
 export default function ListTodo(){
 
     const [todos , setTodos]  = useState<Todo[]>([])
-    const router = useRouter();
+    const [loading , setLoading] = useState<boolean>(true);
+    useEffect(() => {
+        const fetchTodos = async () => {
+            try {
+                const res = await fetch('/api/todo');
+                if (!res.ok) {
+                    throw new Error(`HTTP error! status: ${res.status}`);
+                }
+                const data = await res.json();
+                setTodos(data);
+                setLoading(false);
+            } catch (err) {
+                console.error('Failed to fetch todos:', err);
+            }
+        };
 
+        fetchTodos();
+    }, []);
     
 
     return(
