@@ -18,6 +18,9 @@ export async function POST(request : Request  ){
 
 export async function GET(request : Request){
 
+    console.log("GET API called")
+    // const { searchParams } = new URL(request.url);
+
     const todos = await  prisma.todo.findMany({
         // orderBy:{
         //     id : "desc"
