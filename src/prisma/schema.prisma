@@ -9,12 +9,17 @@ generator client {
   previewFeatures = ["driverAdapters"]
 }
 
+// datasource db {
+//   provider = "postgresql"
+//   url      = env("POSTGRES_PRISMA_POOL_URL")
+//   directUrl = env("DIRECT_URL")
+// }
+
 datasource db {
   provider = "postgresql"
-  url      = env("POSTGRES_PRISMA_POOL_URL")
+  url      = env("DATABASE_URL")
   directUrl = env("DIRECT_URL")
 }
-
 model Todo {
   id Int @id @default(autoincrement())
   title String

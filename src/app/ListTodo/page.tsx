@@ -30,7 +30,7 @@ export default function ListTodo(){
 
     return(
         <>
-         <div className='flex flex-col gap-4 justify-center items-center h-screen bg-gray-900'>
+         <div className='flex flex-col gap-4 justify-center items-center h-screen bg-white-900'>
             <div className= 'text-3xl text-white bg-blue-800'  > List Todo</div>
             <div className='flex flex-col gap-4 '>
                 {todos.map((todo)=>(
